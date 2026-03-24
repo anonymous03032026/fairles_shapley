@@ -1,4 +1,5 @@
 This repository uses Slurm batch scripts to launch bootstrap experiments.
+## Step1: Launch a bootstrap script with ` sbatch`.
 Use the following commands from the terminal:
 ```bash
 sbatch run_bootstrap_shapley.sh
@@ -8,6 +9,8 @@ sbatch run_bootstrap_cons.sh
 sbatch run_bootstrap_sol.sh
 ```
 These scripts launch the bootstrap runs. In the standard setup, the bootstrap baseline uses B = 1,000 independent bootstrap replications.
+
+## Step2: Retrieve the latest matching Slurm job ID.
 
 To retrieve the most recent job ID associated with a specific launcher script, use:
 
@@ -25,6 +28,7 @@ jid=$(
 
 echo "Latest job ID: $jid"
 ```
+##Step3: Use the job ID to inspect timing.
 
 Once you have a job ID, you can compute the wall-time span of the array with:
 
