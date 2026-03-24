@@ -36,28 +36,6 @@ To ensure that conclusions do not depend on a single attribution method, the fra
 ![Majority voting](/image/majority_voting.png)
 ---
 
-## Repository structure
-
-```
-shapley-rawls-fairness/
-│
-├── les/                          # Core library
-│   ├── __init__.py               # exports LES, LESfair
-│   ├── LES.py                    # Standard ESL attribution + variance
-│   └── LES_Fair.py               # Fair ESL attribution (AIF360)
-│
-├── les_plot/                     # Visualization (SHAP-style plots)
-│   ├── __init__.py
-│   └── plot_contributions.py     # les_group_bar, les_bar, les_summary_dot, les_majority_voting
-│
-├── notebooks/
-│   └── census_income_demo.ipynb  #  Full reproduction
-│
-├── docs/img/                     # Diagrams and figures for documentation
-├── requirements.txt
-├── setup.py
-└── LICENSE
-```
 
 ---
 
