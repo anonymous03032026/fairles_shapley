@@ -26,17 +26,20 @@ jid=$(
 )
 echo "Latest job ID: $jid"
 ```
-or use  this to get only the latest job ID:
-```bash
-pattern='run_bootstrap_es.sh'
-jid=$(sacct -u "$USER" -S "$start" -n -X -o JobIDRaw,SubmitLine%300 \
-  | grep -F "$pattern" \
-  | awk '{print $1}' \
-  | sort -n \
-  | tail -n 1)
+The  job ID returned by `sacct` is not always the parent array job ID. For array jobs, inspect the record with  and extract the parent ID before computing the full runtime using the following:
 
-echo "$jid"
+```bash
+sacct -j 6703812 --format=JobID%30,JobName%20,Start,End --noheader
 ```
+Example output:
+```bash
+6700619_998    bootstrap_es_test 2026-03-19T20:20:04 2026-03-19T20:22:38
+6700619_998.batch                batch 2026-03-19T20:20:04 2026-03-19T20:22:38
+6700619_998.extern               extern 2026-03-19T20:20:04 2026-03-19T20:22:38
+6700619_998.0                    python 2026-03-19T20:20:13 2026-03-19T20:22:38
+```
+
+
 
 ## Step3: Use the job ID to inspect timing.
 
