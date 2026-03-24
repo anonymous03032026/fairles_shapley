@@ -17,7 +17,6 @@ To retrieve the most recent job ID associated with a specific launcher script, u
 ```bash
 pattern='run_bootstrap_es.sh'
 start='2026-02-01'
-
 jid=$(
   (sacct --helpformat 2>/dev/null | grep -qw SubmitLine && \
     sacct -u "$USER" -S "$start" -n -X -o JobIDRaw,SubmitLine%300 | \
@@ -25,9 +24,20 @@ jid=$(
   (sacct -u "$USER" -S "$start" -n -X -o JobIDRaw,JobName%300 | \
     grep -F "$pattern" | awk '{print $1}' | sort -n | tail -n 1)
 )
-
 echo "Latest job ID: $jid"
 ```
+or use  this to get only the latest job ID:
+```bash
+pattern='run_bootstrap_es.sh'
+jid=$(sacct -u "$USER" -S "$start" -n -X -o JobIDRaw,SubmitLine%300 \
+  | grep -F "$pattern" \
+  | awk '{print $1}' \
+  | sort -n \
+  | tail -n 1)
+
+echo "$jid"
+```
+
 ## Step3: Use the job ID to inspect timing.
 
 Once you have a job ID (example: 6700619), you can compute the wall-time span of the array with:
