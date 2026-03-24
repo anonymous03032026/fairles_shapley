@@ -47,13 +47,6 @@ cd fairles_shapley
 pip install -r requirements.txt
 ```
 
-Or install as a package:
-
-```bash
-pip install -e .
-```
-
-**Dependencies:** numpy, scipy, scikit-learn, pandas, matplotlib, joblib, aif360, xgboost, lightgbm, ucimlrepo.
 
 ---
 
