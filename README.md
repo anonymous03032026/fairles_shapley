@@ -224,7 +224,7 @@ plt.show()
 ```
 
 
-![group contribution overview](/image/group contribution.png)
+![group contribution overview](/image/group_contribution.png)
 
 
 
@@ -290,7 +290,7 @@ plt.show()
 ```
 
 
-![feature  contribution by group ](/image/feature contribution.png)
+![feature  contribution by group ](/image/feature_contribution.png)
 
 **Reading the plot:** each panel is one ESL method. Orange dots = women's contribution, blue dots = men's. When dots are far apart, the feature contributes differently across groups → source of unfairness.
 
