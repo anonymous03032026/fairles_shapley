@@ -224,7 +224,7 @@ plt.show()
 ```
 
 
-![group contribution overview](group_bar_example.svg)
+![group contribution overview](/image/group_bar_example.png)
 
 
 ### Step 6 — Second-stage feature attribution
@@ -289,7 +289,7 @@ plt.show()
 ```
 
 
-![feature  contribution by group ](summary_dot_example.svg)
+![feature  contribution by group ](/image/summary_dot_example.png)
 
 **Reading the plot:** each panel is one ESL method. Orange dots = women's contribution, blue dots = men's. When dots are far apart, the feature contributes differently across groups → source of unfairness.
 
