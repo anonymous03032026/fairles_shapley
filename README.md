@@ -224,7 +224,8 @@ plt.show()
 ```
 
 
-![group contribution overview](/image/group_bar_example.png)
+![group contribution overview](/image/group contribution.png)
+
 
 
 ### Step 6 — Second-stage feature attribution
@@ -289,7 +290,7 @@ plt.show()
 ```
 
 
-![feature  contribution by group ](/image/summary_dot_example.png)
+![feature  contribution by group ](/image/feature contribution.png)
 
 **Reading the plot:** each panel is one ESL method. Orange dots = women's contribution, blue dots = men's. When dots are far apart, the feature contributes differently across groups → source of unfairness.
 
@@ -310,7 +311,7 @@ fig.savefig("majority_voting.png", dpi=400, bbox_inches="tight")
 plt.show()
 ```
 
-![Majority voting ](majority_voting_example.svg)
+![Majority voting ](/image/majority_voting.png)
 
 **Result:** Age, Hours/Week, and Marital status are flagged as unfair by majority voting. Removing Marital status alone would increase the fairness gap — it acts as a proxy for gender. This finding goes beyond prior work that identified only proxy features.
 
