@@ -65,27 +65,16 @@ awk -v jid="$jid" '
     printf("Array wall time: %02d:%02d:%02d (Earliest=%s Latest=%s)\n", int(d/3600), int((d%3600)/60), d%60, min, max)
   }'
 ```
-
-If your goal is to measure how long the job waited in the queue before starting, use Submit and Start instead:
-
+Example output:
 ```bash
-jid=6700619
-
-sacct -j "$jid" --format=JobID,Submit,Start --noheader | \
-awk -v jid="$jid" '
-  $1 == jid {
-    subm = $2
-    st = $3
-  }
-  END {
-    gsub("T", " ", subm)
-    gsub("T", " ", st)
-    "date -d \"" subm "\" +%s" | getline s
-    close("date -d \"" subm "\" +%s")
-    "date -d \"" st "\" +%s" | getline e
-    close("date -d \"" st "\" +%s")
-    d = e - s
-    printf("Queue wait time: %02d:%02d:%02d (Submit=%s Start=%s)\n", int(d/3600), int((d%3600)/60), d%60, subm, st)
-  }'
+Array wall time: 01:39:43 (Earliest=2026-03-19 17:06:51 Latest=2026-03-19 18:46:34)
 ```
+
+
+
+
+
+
+
+
 
