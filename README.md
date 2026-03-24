@@ -33,8 +33,7 @@ This library implements the **two-stage ESL (Efficient-Symmetric-Linear) attribu
 
 To ensure that conclusions do not depend on a single attribution method, the framework runs all five ESL values  — **Shapley**, **Equal Surplus (ES)**, **Solidarity**, **Consensus**, and **LSP** — independently on each feature. Each value casts a vote: "unfair" (reject) or "fair" (fail to reject). A feature is declared **unfair** when at least 3 out of 5 ESL values reject the null hypothesis. This majority rule makes the analysis robust to the idiosyncrasies of any single method.
 
-![Majority voting ](main/image/majority_voting.png)
-
+![Majority voting](/image/majority_voting.png)
 ---
 
 ## Repository structure
