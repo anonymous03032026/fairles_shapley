@@ -30,7 +30,7 @@ echo "Latest job ID: $jid"
 ```
 ## Step3: Use the job ID to inspect timing.
 
-Once you have a job ID, you can compute the wall-time span of the array with:
+Once you have a job ID (example: 6700619), you can compute the wall-time span of the array with:
 
 ```bash
 jid=6700619
