@@ -66,7 +66,6 @@ The notebook reproduces every result from the paper on the **Census Income datas
 4. Second-stage feature attribution with parallelism
 5. Asymptotic variance and feature-level Z-tests
 6. Equalized Odds mitigation + verification
-7. All  plots
 
 ---
 
