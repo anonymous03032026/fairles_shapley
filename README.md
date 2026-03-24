@@ -21,7 +21,7 @@ This library implements the **two-stage ESL (Efficient-Symmetric-Linear) attribu
 
 ## How it works — at a glance
 
-![Two-stage ESL overview](summary.svg)
+![Two-stage ESL overview](/image/summary.png)
 
 **The core idea:** a classifier is *fair* if and only if each demographic group contributes equally to the classification metric (Theorem 3.1). When fairness is violated, we recursively decompose each group's contribution over features to pinpoint which ones drive the disparity.
 
