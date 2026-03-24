@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FAFBFE"/>
+      <stop offset="100%" stop-color="#F0F2F8"/>
+    </linearGradient>
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#00000012"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="660" rx="16" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="480" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#1a1a2e">Two-Stage ESL Framework</text>
+  <text x="480" y="60" text-anchor="middle" font-size="12" fill="#6b7280">Shapley meets Rawls — Measuring and Explaining Group Unfairness</text>
+
+  <!-- ═══════════════════ INPUT ═══════════════════ -->
+  <g filter="url(#shadow)">
+    <rect x="355" y="82" width="250" height="52" rx="10" fill="#ffffff" stroke="#D1D5DB" stroke-width="1"/>
+    <text x="480" y="103" text-anchor="middle" font-size="14" font-weight="600" fill="#374151">Trained Classifier</text>
+    <text x="480" y="121" text-anchor="middle" font-size="11" fill="#9CA3AF">Any sklearn-compatible model</text>
+  </g>
+
+  <!-- Arrow down -->
+  <line x1="480" y1="134" x2="480" y2="164" stroke="#9CA3AF" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ═══════════════════ STAGE 1 ZONE ═══════════════════ -->
+  <rect x="30" y="166" width="900" height="170" rx="12" fill="#EBF5FF" fill-opacity="0.6" stroke="#93C5FD" stroke-width="1" stroke-dasharray="6 3"/>
+  <text x="50" y="190" font-size="12" font-weight="700" fill="#1D4ED8" letter-spacing="1">STAGE 1 — IS THE CLASSIFIER FAIR?</text>
+  <text x="50" y="206" font-size="10.5" fill="#3B82F6">Measure each group's contribution to the classifier's performance</text>
+
+  <!-- Metric box -->
+  <g filter="url(#shadow)">
+    <rect x="70" y="222" width="190" height="52" rx="8" fill="#ffffff" stroke="#93C5FD" stroke-width="1"/>
+    <text x="165" y="243" text-anchor="middle" font-size="12" font-weight="600" fill="#1E40AF">Choose a metric</text>
+    <text x="165" y="261" text-anchor="middle" font-size="10.5" fill="#60A5FA">e.g. True Positive Rate</text>
+  </g>
+
+  <!-- Arrow right -->
+  <line x1="260" y1="248" x2="298" y2="248" stroke="#3B82F6" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- ESL decomposition box -->
+  <g filter="url(#shadow)">
+    <rect x="300" y="222" width="220" height="52" rx="8" fill="#ffffff" stroke="#93C5FD" stroke-width="1"/>
+    <text x="410" y="241" text-anchor="middle" font-size="12" font-weight="600" fill="#1E40AF">Split by group</text>
+    <text x="410" y="259" text-anchor="middle" font-size="10.5" fill="#60A5FA">How much does each group</text>
+    <text x="410" y="272" text-anchor="middle" font-size="10.5" fill="#60A5FA">contribute to the metric?</text>
+  </g>
+
+  <!-- Arrows to group boxes -->
+  <line x1="520" y1="237" x2="580" y2="228" stroke="#3B82F6" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="520" y1="259" x2="580" y2="268" stroke="#3B82F6" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Group 1: Men -->
+  <g filter="url(#shadow)">
+    <rect x="582" y="212" width="150" height="36" rx="8" fill="#0072B2" fill-opacity="0.12" stroke="#0072B2" stroke-width="1"/>
+    <text x="657" y="235" text-anchor="middle" font-size="12" font-weight="600" fill="#0072B2">Men's contribution</text>
+  </g>
+  <!-- Group 2: Women -->
+  <g filter="url(#shadow)">
+    <rect x="582" y="254" width="150" height="36" rx="8" fill="#D55E00" fill-opacity="0.12" stroke="#D55E00" stroke-width="1"/>
+    <text x="657" y="277" text-anchor="middle" font-size="12" font-weight="600" fill="#D55E00">Women's contribution</text>
+  </g>
+
+  <!-- Test box -->
+  <g filter="url(#shadow)">
+    <rect x="762" y="224" width="150" height="52" rx="8" fill="#FEF3C7" stroke="#F59E0B" stroke-width="1"/>
+    <text x="837" y="244" text-anchor="middle" font-size="12" font-weight="600" fill="#92400E">Fairness test</text>
+    <text x="837" y="262" text-anchor="middle" font-size="10.5" fill="#B45309">Are the two contributions</text>
+    <text x="837" y="275" text-anchor="middle" font-size="10.5" fill="#B45309">significantly different?</text>
+  </g>
+  <line x1="732" y1="250" x2="760" y2="250" stroke="#F59E0B" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Result labels -->
+  <text x="837" y="294" text-anchor="middle" font-size="10" font-weight="600" fill="#B45309">YES → unfair</text>
+  <text x="837" y="308" text-anchor="middle" font-size="10" fill="#9CA3AF">NO → fair</text>
+
+  <!-- Arrow down from stage 1 to stage 2 -->
+  <path d="M837 310 L837 350 L480 350 L480 378" fill="none" stroke="#6B7280" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="680" y="346" font-size="10.5" font-weight="500" fill="#6B7280">If unfair → explain why</text>
+
+  <!-- ═══════════════════ STAGE 2 ZONE ═══════════════════ -->
+  <rect x="30" y="380" width="900" height="170" rx="12" fill="#ECFDF5" fill-opacity="0.6" stroke="#6EE7B7" stroke-width="1" stroke-dasharray="6 3"/>
+  <text x="50" y="404" font-size="12" font-weight="700" fill="#047857" letter-spacing="1">STAGE 2 — WHICH FEATURES CAUSE UNFAIRNESS?</text>
+  <text x="50" y="420" font-size="10.5" fill="#10B981">Break down each group's contribution over the individual features</text>
+
+  <!-- Feature decomp for men -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="436" width="200" height="48" rx="8" fill="#ffffff" stroke="#0072B2" stroke-width="1"/>
+    <text x="160" y="455" text-anchor="middle" font-size="11" font-weight="600" fill="#0072B2">Men: contribution per feature</text>
+    <text x="160" y="473" text-anchor="middle" font-size="10" fill="#6B7280">Age · Educ · Hours · Marital</text>
+  </g>
+
+  <!-- Feature decomp for women -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="492" width="200" height="48" rx="8" fill="#ffffff" stroke="#D55E00" stroke-width="1"/>
+    <text x="160" y="511" text-anchor="middle" font-size="11" font-weight="600" fill="#D55E00">Women: contribution per feature</text>
+    <text x="160" y="529" text-anchor="middle" font-size="10" fill="#6B7280">Age · Educ · Hours · Marital</text>
+  </g>
+
+  <!-- Arrow to comparison -->
+  <line x1="260" y1="484" x2="302" y2="484" stroke="#059669" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Feature-level test -->
+  <g filter="url(#shadow)">
+    <rect x="304" y="450" width="190" height="68" rx="8" fill="#ffffff" stroke="#6EE7B7" stroke-width="1"/>
+    <text x="399" y="470" text-anchor="middle" font-size="12" font-weight="600" fill="#047857">Compare per feature</text>
+    <text x="399" y="488" text-anchor="middle" font-size="10.5" fill="#059669">Does this feature contribute</text>
+    <text x="399" y="503" text-anchor="middle" font-size="10.5" fill="#059669">differently for men vs women?</text>
+  </g>
+
+  <!-- Arrow to majority voting -->
+  <line x1="494" y1="484" x2="534" y2="484" stroke="#059669" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Majority voting -->
+  <g filter="url(#shadow)">
+    <rect x="536" y="436" width="186" height="96" rx="8" fill="#ffffff" stroke="#8B5CF6" stroke-width="1"/>
+    <text x="629" y="458" text-anchor="middle" font-size="12" font-weight="700" fill="#6D28D9">Majority Voting</text>
+    <text x="629" y="476" text-anchor="middle" font-size="10.5" fill="#7C3AED">5 ESL values each vote</text>
+    <text x="629" y="493" text-anchor="middle" font-size="10" fill="#6B7280">Shapley · ES · Solidarity</text>
+    <text x="629" y="507" text-anchor="middle" font-size="10" fill="#6B7280">Consensus · LSP</text>
+    <text x="629" y="524" text-anchor="middle" font-size="10.5" font-weight="600" fill="#8B5CF6">If 3 out of 5 agree → unfair</text>
+  </g>
+
+  <!-- Arrow to output -->
+  <line x1="722" y1="484" x2="758" y2="484" stroke="#8B5CF6" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Final output -->
+  <g filter="url(#shadow)">
+    <rect x="760" y="440" width="152" height="88" rx="8" fill="#F5F3FF" stroke="#8B5CF6" stroke-width="1"/>
+    <text x="836" y="462" text-anchor="middle" font-size="13" font-weight="700" fill="#6D28D9">Verdict</text>
+    <text x="836" y="482" text-anchor="middle" font-size="11" fill="#2CA02C" font-weight="600">✓ Age → unfair</text>
+    <text x="836" y="498" text-anchor="middle" font-size="11" fill="#2CA02C" font-weight="600">✓ Hours → unfair</text>
+    <text x="836" y="514" text-anchor="middle" font-size="11" fill="#D62728">✗ Educ → fair</text>
+    <text x="836" y="530" text-anchor="middle" font-size="11" fill="#2CA02C" font-weight="600">✓ Marital → unfair</text>
+  </g>
+
+  <!-- ═══════════════════ OPTIONAL: FAIR VARIANT ═══════════════════ -->
+  <rect x="30" y="566" width="900" height="52" rx="12" fill="#FFF7ED" fill-opacity="0.6" stroke="#FDBA74" stroke-width="1" stroke-dasharray="6 3"/>
+  <text x="50" y="588" font-size="12" font-weight="700" fill="#C2410C" letter-spacing="1">OPTIONAL — FAIR MITIGATION</text>
+  <text x="325" y="588" font-size="11" fill="#EA580C">Apply Equalized Odds correction (AIF360), then repeat both stages to verify the gap closes</text>
+
+  <!-- ESL method pills at the bottom -->
+  <text x="130" y="642" font-size="11" font-weight="600" fill="#555">5 ESL values used at both stages:</text>
+
+  <rect x="338" y="628" width="68" height="24" rx="7" fill="#4C72B0" fill-opacity="0.15" stroke="#4C72B0" stroke-width="0.8"/>
+  <text x="372" y="644" text-anchor="middle" font-size="10.5" font-weight="600" fill="#4C72B0">Shapley</text>
+
+  <rect x="416" y="628" width="40" height="24" rx="7" fill="#DD8452" fill-opacity="0.15" stroke="#DD8452" stroke-width="0.8"/>
+  <text x="436" y="644" text-anchor="middle" font-size="10.5" font-weight="600" fill="#DD8452">ES</text>
+
+  <rect x="466" y="628" width="76" height="24" rx="7" fill="#55A868" fill-opacity="0.15" stroke="#55A868" stroke-width="0.8"/>
+  <text x="504" y="644" text-anchor="middle" font-size="10.5" font-weight="600" fill="#55A868">Solidarity</text>
+
+  <rect x="552" y="628" width="82" height="24" rx="7" fill="#C44E52" fill-opacity="0.15" stroke="#C44E52" stroke-width="0.8"/>
+  <text x="593" y="644" text-anchor="middle" font-size="10.5" font-weight="600" fill="#C44E52">Consensus</text>
+
+  <rect x="644" y="628" width="44" height="24" rx="7" fill="#8172B2" fill-opacity="0.15" stroke="#8172B2" stroke-width="0.8"/>
+  <text x="666" y="644" text-anchor="middle" font-size="10.5" font-weight="600" fill="#8172B2">LSP</text>
+</svg>
