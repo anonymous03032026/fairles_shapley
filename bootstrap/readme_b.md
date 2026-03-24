@@ -28,7 +28,7 @@ jid=$(
 
 echo "Latest job ID: $jid"
 ```
-##Step3: Use the job ID to inspect timing.
+## Step3: Use the job ID to inspect timing.
 
 Once you have a job ID, you can compute the wall-time span of the array with:
 
