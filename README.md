@@ -390,7 +390,7 @@ X = df[['age', 'education-num', 'hours-per-week', 'marital-status', 'sex']]
 ### `LES` — Standard ESL attribution
 
 ```python
-from les import LES
+from LES import LES
 
 attr = LES(model=clf, method='shapley')
 ```
@@ -399,7 +399,7 @@ attr = LES(model=clf, method='shapley')
 `'shapley'`, `'ES'`, `'ES_LES'`, `'solidarity'`, `'consensus'`, `'LSP'`
 
 ```python
-phi = attr.fit_FS(X_train, y_train, X_test, y_test, metric='TPR')
+phi = attr.fit_FS(Xshp, yshp, Xshpt, yshpt, metric='TPR')
 # phi.shape = (1, 2) → [women, men]
 ```
 
@@ -408,7 +408,7 @@ phi = attr.fit_FS(X_train, y_train, X_test, y_test, metric='TPR')
 
 ```python
 attr2 = LES(model=clf, method='shapleysecd_parallel')
-contrib_women, contrib_men = attr2.fit_parallel(X_train, y_train, X_test, y_test, n_jobs=8)
+contrib_women, contrib_men = attr2.fit_parallel(Xshp, yshp, Xshpt, yshpt, n_jobs=8)
 ```
 
 **Variance and tests:**
@@ -424,10 +424,10 @@ result = LES.fairness_test(b1, b2, phi_men, phi_women, p, n1, n2)
 ### `LESfair` — Fair ESL attribution
 
 ```python
-from les import LESfair
+from LESfair import LESfair
 
 fair = LESfair(model=clf, method='FairESadj')
-phi = fair.fit_FSF(X_train, y_train, X_test, y_test,
+phi = fair.fit_FSF(Xshp, yshp, Xshpt, yshpt,
                    column_names=names, label='income', attribute='sex')
 ```
 
