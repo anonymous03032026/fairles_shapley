@@ -43,11 +43,6 @@ To ensure that conclusions do not depend on a single attribution method, the fra
 
 ## Quick start 
 
-Open the notebook and run all cells:
-
-```bash
-jupyter notebook notebooks/census_income_demo.ipynb
-```
 
 The notebook reproduces every result from the paper on the **Census Income dataset** (UCI, Kohavi 1996) — from data loading to the final majority voting table. It covers:
 
