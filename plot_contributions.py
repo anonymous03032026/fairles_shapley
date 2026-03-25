@@ -7,9 +7,6 @@ Stage 1 (group-level)
   les_group_bar       Horizontal bars: one  per ESL method
 
 Stage 2 (feature-level)
-  les_bar             Ranked horizontal bars for one group
-
-Multi-method
   les_summary_dot     One panel per ESL method 
   les_majority_voting Hypothesis-test decision table (majority rule)
 
@@ -131,70 +128,6 @@ def les_group_bar(
 # STAGE 2    feature-level attribution
 # ===========================================================================
 
-
-def les_bar(
-    contrib_dict,
-    feature_names,
-    group_label='Group',
-    title=None,
-    figsize=(7, 4),
-    save_path=None,
-):
-    """
-    Horizontal bar chart: feature contributions for one group,
-    one coloured bar per ESL method.
-    Features sorted top-to-bottom by mean |contribution|.
-
-    Parameters
-    ----------
-    contrib_dict : dict  {esl_name: array(n_features,)}
-    """
-    if title is None:
-        title = f'LES bar    feature contributions  |  {group_label}'
-
-    meths = _methods(contrib_dict)
-    k     = len(feature_names)
-
-    mean_abs = np.mean(np.abs(np.vstack(
-        [contrib_dict[m] for m in meths]
-    )), axis=0)
-    order       = np.argsort(mean_abs)
-    feat_sorted = [feature_names[i] for i in order]
-
-    n_m = len(meths)
-    h   = 0.75 / n_m
-    y   = np.arange(k)
-
-    fig, ax = plt.subplots(figsize=figsize, facecolor='white')
-    _clean_ax(ax)
-
-    for j, m in enumerate(meths):
-        vals   = np.asarray(contrib_dict[m]).ravel()[order]
-        offset = (j - (n_m - 1) / 2) * h
-        ax.barh(
-            y + offset, vals, h * 0.92,
-            color=_ESL_COLORS.get(m, '#777777'),
-            alpha=0.85, label=m,
-            edgecolor='white', linewidth=0.4, zorder=3,
-        )
-
-    ax.set_yticks(y)
-    ax.set_yticklabels(feat_sorted, fontsize=10)
-    ax.axvline(0, color='#AAAAAA', linewidth=0.9, linestyle='--')
-    ax.set_xlabel('ESL contribution  C^k', fontsize=9)
-    ax.set_title(title, fontsize=11, fontweight='bold', pad=10)
-    ax.legend(
-        frameon=False, fontsize=8.5,
-        bbox_to_anchor=(1.01, 1), loc='upper left',
-    )
-    return _finish(fig, save_path), ax
-
-
-
-
-# ===========================================================================
-# Multi-method summary  
-# ===========================================================================
 
 def les_summary_dot(
     contrib_women_dict,
