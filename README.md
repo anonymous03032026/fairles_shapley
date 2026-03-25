@@ -368,7 +368,6 @@ The `les_plot` module provides four SHAP-style visualizations:
 | Function | Purpose | Stage |
 |:---------|:--------|:------|
 | `les_group_bar(phi_dict)` | Grouped horizontal bars: one pair per ESL method | 1 |
-| `les_bar(contrib_dict, features)` | Ranked feature bars for one group, all methods | 2 |
 | `les_summary_dot(cw, cm, features)` | Dot plot per method — women vs men per feature | 2 |
 | `les_majority_voting(tests, features)` | Heatmap with ✓/✗ decisions + majority row | 2 |
 
@@ -379,11 +378,8 @@ All functions return `(fig, ax)` and accept `save_path` for export.
 ## Key convention
 
 > **The sensitive attribute must always be the last column** of every feature matrix `X` / `Xt` passed to the library.
-
-`group_column` defaults to `X.shape[1] - 1` and can be omitted in most calls.
-
 ```python
-# Correct: sex is the last column
+# sex is the last column
 X = df[['age', 'education-num', 'hours-per-week', 'marital-status', 'sex']]
 ```
 
