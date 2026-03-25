@@ -9,10 +9,10 @@ from LES import LES
 
 def stratified_bootstrap_indices_test(Xt, yt, group_column, rng):
     """
-    Bootstrap du TEST stratifié par (g, y) :
+    Stratified bootstrap of the test by (g, y) :
       strates = (g=0,y=0), (g=0,y=1), (g=1,y=0), (g=1,y=1)
-    On resample AVEC remplacement à l'intérieur de chaque strate,
-    en conservant la taille de chaque strate identique à l'original.
+    We resample with replacement within each stratum,
+    while keeping the size of each stratum identical to the original.
     """
     g = Xt[:, group_column].astype(int).ravel()
     y = yt.astype(int).ravel()
@@ -27,23 +27,23 @@ def stratified_bootstrap_indices_test(Xt, yt, group_column, rng):
             n_stratum = idx_stratum.size
 
             if n_stratum == 0:
-                continue  # pas de point dans cette strate
+                continue  
 
-            # resample dans la strate
+            
             boot_idx_parts.append(rng.choice(idx_stratum, size=n_stratum, replace=True))
 
     boot_idx = np.concatenate(boot_idx_parts)
-    rng.shuffle(boot_idx)  # optionnel : mélanger l'ordre
+    rng.shuffle(boot_idx)  
     return boot_idx
 
 def one_bootstrap_diff(seed, method, X, y, Xt, yt, group_column, metric='TPR', n_jobs=56):
     rng = np.random.default_rng(seed)
 
-    # TEST bootstrap stratifié (g,y)
+    # TEST bootstrap  (g,y)
     idx_te = stratified_bootstrap_indices_test(Xt, yt, group_column, rng)
     Xtb, ytb = Xt[idx_te], yt[idx_te]
 
-    # Train fixé 
+
     C_wom, C_men = method(
         X, y,
         Xtb, ytb,
