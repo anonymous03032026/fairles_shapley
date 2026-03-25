@@ -42,9 +42,7 @@ To ensure that conclusions do not depend on a single attribution method, the fra
 ---
 
 ## Quick start 
-
 The notebook reproduces every result from the paper on the **Census Income dataset** (UCI, Kohavi 1996) — from data loading to the final majority voting table. It covers:
-
 1. Data preprocessing and soft-voting ensemble training
 2. First-stage ESL group attribution (all 5 methods)
 3. Group-level fairness Z-test
