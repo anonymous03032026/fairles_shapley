@@ -266,7 +266,7 @@ plt.show()
 
 ![Majority voting ](/image/majority_voting.png)
 
-**Result:** Age, Hours/Week, and Marital status are flagged as unfair by majority voting. Removing Marital status alone would increase the fairness gap — it acts as a proxy for gender. This finding goes beyond prior work that identified only proxy features.
+**Result:** Age, Hours/Week, and Marital status are flagged as unfair by majority voting. This finding goes beyond prior work that identified only proxy features.
 
 ### Step 9 — Fair mitigation (optional)
 
