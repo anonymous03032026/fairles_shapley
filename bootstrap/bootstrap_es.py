@@ -58,7 +58,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--seed",   type=int, required=True,
                         help="Seed bootstrap (0&B-1)")
-    parser.add_argument("--data-dir", default="/home/fadoua.jouidel-amri/LES_paper_github",
+    parser.add_argument("--data-dir", default="/home/anonymous03032026/LES_paper_github",
                         help="Répertoire contenant Xshp.npy, yshp.npy, etc.")
     args = parser.parse_args()
 
