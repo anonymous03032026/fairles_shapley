@@ -288,16 +288,76 @@ plt.show()
 ### Step 9 — Fair mitigation (optional)
 
 ```python
-from les import LESfair
-
-fair_attr = LESfair(model=model, method='FairESadj')
-phi_fair = fair_attr.fit_FSF(
-    X_train, y_train, X_test, y_test,
-    column_names=feature_names + ['sex'],
-    label='income', attribute='sex'
-)
+#First stage
+attributionFair    = LESfair(model=voting_clf, method='Fairshapleyadj')
+attributionESFair  = LESfair(model=voting_clf, method='FairESadj')
+attributionSolFair = LESfair(model=voting_clf, method='Fairsolidarityadj')
+attributionCsFair  = LESfair(model=voting_clf, method='Fairconsensusadj')
+attributionLSPFair = LESfair(model=voting_clf, method='FairLSPadj')
 # After EqOdds: Men 51.7% / Women 48.3% → gap ≈ 0 → fair
+
+resultsesFair    = attributionESFair.fit_FSF(
+    Xshp, yshp, Xshpt, yshpt, gender_col_index,
+    column_names, 'income', 'sex',
+)
+resultsShpFair   = attributionFair.fit_FSF(
+    Xshp, yshp, Xshpt, yshpt, gender_col_index,
+    column_names, 'income', 'sex',
+)
+resultssolFairs  = attributionSolFair.fit_FSF(
+    Xshp, yshp, Xshpt, yshpt, gender_col_index,
+    column_names, 'income', 'sex',
+)
+resultscsFair    = attributionCsFair.fit_FSF(
+    Xshp, yshp, Xshpt, yshpt, gender_col_index,
+    column_names, 'income', 'sex',
+)
+resultsLSPFair   = attributionLSPFair.fit_FSF(
+    Xshp, yshp, Xshpt, yshpt, gender_col_index,
+    column_names, 'income', 'sex',
+)
 ```
+
+```python
+#Second stage 
+attributionShpFairsecd = LESfair(model=voting_clf, method='Fairshapleysecd')
+attributionESFairsecd  = LESfair(model=voting_clf, method='FairESsecd')
+attributionSolFairsecd = LESfair(model=voting_clf, method='Fairsolidaritysecd')
+attributionCsFairsecd  = LESfair(model=voting_clf, method='Fairconsensussecd')
+attributionLSPFairsecd = LESfair(model=voting_clf, method='FairLSPsecd')
+
+
+resultsesFairsecd  = attributionESFairsecd.fit_SSF(
+    Xshp, yshp, Xshpt, yshpt, gender_col_index,
+    column_names, 'income', 'sex',
+)
+print('ES (fair, secd):', resultsesFairsecd)
+
+resultsShpFairsecd = attributionShpFairsecd.fit_SSF(
+    Xshp, yshp, Xshpt, yshpt, gender_col_index,
+    column_names, 'income', 'sex',
+)
+print('Shapley (fair, secd):', resultsShpFairsecd)
+
+resultssolFair     = attributionSolFairsecd.fit_SSF(
+    Xshp, yshp, Xshpt, yshpt, gender_col_index,
+    column_names, 'income', 'sex',
+)
+print('Solidarity (fair, secd):', resultssolFair)
+
+resultscsFairsecd  = attributionCsFairsecd.fit_SSF(
+    Xshp, yshp, Xshpt, yshpt, gender_col_index,
+    column_names, 'income', 'sex',
+)
+print('Consensus (fair, secd):', resultscsFairsecd)
+
+resultsFairLSPsd   = attributionLSPFairsecd.fit_SSF(
+    Xshp, yshp, Xshpt, yshpt, gender_col_index,
+    column_names, 'income', 'sex',
+)
+print('LSP (fair, secd):', resultsFairLSPsd)
+```
+
 
 ---
 
