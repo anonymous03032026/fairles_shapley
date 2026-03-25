@@ -39,15 +39,6 @@ To ensure that conclusions do not depend on a single attribution method, the fra
 
 ---
 
-## Installation
-
-```bash
-git clone https://github.com/anonymous03032026/fairles_shapley.git
-cd fairles_shapley
-pip install -r requirements.txt
-```
-
-
 ---
 
 ## Quick start 
